@@ -17,3 +17,23 @@ function Gameboard() {
 }
 
 Gameboard();
+
+function Players() {
+
+    const players = {
+   playerOne : {
+        name: 'Player One',
+        mark: 'X'
+    },
+    playerTwo : {
+        name: 'Player Two',
+        mark: 'O'
+    }
+} 
+
+    getPlayers = () => players;
+    console.log(players);
+    return getPlayers;
+}
+
+Players();
