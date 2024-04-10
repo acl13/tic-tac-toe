@@ -20,20 +20,29 @@ Gameboard();
 
 function Players() {
 
-    const players = {
-   playerOne : {
+    const players = [
+        {
         name: 'Player One',
         mark: 'X'
-    },
-    playerTwo : {
+        },
+        {
         name: 'Player Two',
         mark: 'O'
-    }
-} 
+        }
+    ]
 
     getPlayers = () => players;
     console.log(players);
-    return getPlayers;
+
+let activePlayer = players[0];
+     switchPlayerTurn = () => {
+       activePlayer = activePlayer === players[0] ? players[1] : players[0];
+    }
+
+    getActivePlayer = () => activePlayer;
+
+
+    return {getPlayers, getActivePlayer, switchPlayerTurn};
 }
 
 Players();
