@@ -1,5 +1,5 @@
 
-function Gameboard() {
+(function Gameboard() {
     board = [];
     const rows = 3;
     const columns = 3;
@@ -14,11 +14,10 @@ function Gameboard() {
     console.log(board);
     getBoard = () => board;
     return getBoard;
-}
+})();
 
-Gameboard();
 
-function Players() {
+(function Players() {
 
     const players = [
         {
@@ -33,11 +32,10 @@ function Players() {
 
     getPlayers = () => players;
     return getPlayers;
-}
+})();
 
-Players();
 
-function GameController() {
+(function GameController() {
 
     const players = getPlayers();
 
@@ -58,6 +56,4 @@ function GameController() {
         console.log(getBoard());
         switchPlayerTurn();
     }
-}
-
-GameController();
+})();
