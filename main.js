@@ -34,15 +34,46 @@ function Players() {
     getPlayers = () => players;
     console.log(players);
 
-let activePlayer = players[0];
-     switchPlayerTurn = () => {
-       activePlayer = activePlayer === players[0] ? players[1] : players[0];
-    }
+// let activePlayer = players[0];
+//      switchPlayerTurn = () => {
+//        activePlayer = activePlayer === players[0] ? players[1] : players[0];
+//     }
 
-    getActivePlayer = () => activePlayer;
+//     getActivePlayer = () => activePlayer;
 
 
-    return {getPlayers, getActivePlayer, switchPlayerTurn};
+    return getPlayers;
 }
 
 Players();
+
+function GameController() {
+
+    const players = getPlayers();
+    console.log(players);
+
+    let activePlayer = players[0];
+        switchPlayerTurn = () => {
+        activePlayer = activePlayer === players[0] ? players[1] : players[0];
+        }
+
+    getActivePlayer = () => activePlayer;
+
+    // console.log(activePlayer);
+    // switchPlayerTurn();
+    // console.log(activePlayer);
+
+    playTurn = () => {
+        const chooseRow = prompt(`${activePlayer.name}, choose your row:  0, 1, or 2`);
+        const chooseColumn = prompt(`${activePlayer.name}, choose your column: 0, 1, or 2`);
+
+        const board = getBoard();
+        const getRow = board[chooseRow];
+        getRow.splice(chooseColumn, 1, activePlayer.mark);
+   
+        console.log(getBoard());
+        switchPlayerTurn();
+    }
+}
+
+GameController();
