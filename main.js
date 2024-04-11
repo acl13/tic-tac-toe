@@ -32,16 +32,6 @@ function Players() {
     ]
 
     getPlayers = () => players;
-    console.log(players);
-
-// let activePlayer = players[0];
-//      switchPlayerTurn = () => {
-//        activePlayer = activePlayer === players[0] ? players[1] : players[0];
-//     }
-
-//     getActivePlayer = () => activePlayer;
-
-
     return getPlayers;
 }
 
@@ -50,18 +40,12 @@ Players();
 function GameController() {
 
     const players = getPlayers();
-    console.log(players);
 
     let activePlayer = players[0];
         switchPlayerTurn = () => {
         activePlayer = activePlayer === players[0] ? players[1] : players[0];
         }
 
-    getActivePlayer = () => activePlayer;
-
-    // console.log(activePlayer);
-    // switchPlayerTurn();
-    // console.log(activePlayer);
 
     playTurn = () => {
         const chooseRow = prompt(`${activePlayer.name}, choose your row:  0, 1, or 2`);
