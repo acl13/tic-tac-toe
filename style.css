@@ -1,5 +1,5 @@
-h1 {
-    color: purple;
+body {
+    text-align: center;
 }
 
 button {
@@ -12,6 +12,11 @@ button {
 
 button:hover {
     background-color: lightgoldenrodyellow;
+}
+
+.player-info p {
+    display: inline;
+    padding: 0px 20px;
 }
 
 .container {
