@@ -54,6 +54,45 @@
         getRow.splice(chooseColumn, 1, activePlayer.mark);
    
         console.log(getBoard());
+        declareWinner();
         switchPlayerTurn();
     }
+
+    declareWinner = () => {
+        switch (true) {
+            case (board[0][0] === activePlayer.mark && board[0][1] === activePlayer.mark && board[0][2] === activePlayer.mark):
+                console.log(`${activePlayer.name} wins!`)
+                break;
+            case (board[1][0] === activePlayer.mark && board[1][1] === activePlayer.mark && board[1][2] === activePlayer.mark):
+                console.log(`${activePlayer.name} wins!`)
+                break;  
+            case (board[2][0] === activePlayer.mark && board[2][1] === activePlayer.mark && board[2][2] === activePlayer.mark):
+                console.log(`${activePlayer.name} wins!`)
+                break; 
+            case (board[0][0] === activePlayer.mark && board[1][0] === activePlayer.mark && board[2][0] === activePlayer.mark):
+                console.log(`${activePlayer.name} wins!`)
+                break; 
+            case (board[0][1] === activePlayer.mark && board[1][1] === activePlayer.mark && board[2][1] === activePlayer.mark):
+                console.log(`${activePlayer.name} wins!`)
+                break;
+            case (board[0][2] === activePlayer.mark && board[1][2] === activePlayer.mark && board[2][2] === activePlayer.mark):
+                console.log(`${activePlayer.name} wins!`)
+                break; 
+            case (board[0][0] === activePlayer.mark && board[1][1] === activePlayer.mark && board[2][2] === activePlayer.mark):
+                console.log(`${activePlayer.name} wins!`)
+                break; 
+            case (board[0][2] === activePlayer.mark && board[1][1] === activePlayer.mark && board[2][0] === activePlayer.mark):
+                console.log(`${activePlayer.name} wins!`)
+                break; 
+            case (board[0].includes('') === false && board[1].includes('') === false && board[2].includes('') === false) :
+                console.log(`It's a tie!`) 
+                break;      
+            default:
+                console.log('no winner declared') 
+                break;      
+        }
+    }
+
+    return playTurn;
+
 })();
