@@ -96,9 +96,16 @@ for (i = 0; i < boardButtons.length; i++) {
         let column = location.column;
         playTurn(row, column);
     
-    })
+    }, {once: true});
 }
   
+disableButtons = () => {
+    for (let button of boardButtons) {
+        button.disabled = true;
+    }
+    const replay = document.getElementById('replay');
+    replay.textContent = 'Please refresh the browser to play again.'
+}
 
     updateUserInterface = () => {
     button1.textContent = board[0][0];
@@ -115,7 +122,7 @@ for (i = 0; i < boardButtons.length; i++) {
 
 
 
-    return updateUserInterface;
+    return {updateUserInterface, disableButtons};
 })();
 
 
@@ -144,40 +151,41 @@ for (i = 0; i < boardButtons.length; i++) {
         const displayStatus = document.getElementById('game-status');
         switch (true) {
             case (board[0][0] === activePlayer.mark && board[0][1] === activePlayer.mark && board[0][2] === activePlayer.mark):
-                console.log(`${activePlayer.name} wins!`)
                 displayStatus.textContent = `${activePlayer.name} wins!`
+                disableButtons()
                 break;
             case (board[1][0] === activePlayer.mark && board[1][1] === activePlayer.mark && board[1][2] === activePlayer.mark):
-                console.log(`${activePlayer.name} wins!`)
                 displayStatus.textContent = `${activePlayer.name} wins!`
+                disableButtons()
                 break;  
             case (board[2][0] === activePlayer.mark && board[2][1] === activePlayer.mark && board[2][2] === activePlayer.mark):
-                console.log(`${activePlayer.name} wins!`)
                 displayStatus.textContent = `${activePlayer.name} wins!`
+                disableButtons()
                 break; 
             case (board[0][0] === activePlayer.mark && board[1][0] === activePlayer.mark && board[2][0] === activePlayer.mark):
-                console.log(`${activePlayer.name} wins!`)
                 displayStatus.textContent = `${activePlayer.name} wins!`
+                disableButtons()
                 break; 
             case (board[0][1] === activePlayer.mark && board[1][1] === activePlayer.mark && board[2][1] === activePlayer.mark):
-                console.log(`${activePlayer.name} wins!`)
                 displayStatus.textContent = `${activePlayer.name} wins!`
+                disableButtons()
                 break;
             case (board[0][2] === activePlayer.mark && board[1][2] === activePlayer.mark && board[2][2] === activePlayer.mark):
-                console.log(`${activePlayer.name} wins!`)
                 displayStatus.textContent = `${activePlayer.name} wins!`
+                disableButtons()
                 break; 
             case (board[0][0] === activePlayer.mark && board[1][1] === activePlayer.mark && board[2][2] === activePlayer.mark):
-                console.log(`${activePlayer.name} wins!`)
                 displayStatus.textContent = `${activePlayer.name} wins!`
+                disableButtons()
                 break; 
             case (board[0][2] === activePlayer.mark && board[1][1] === activePlayer.mark && board[2][0] === activePlayer.mark):
-                console.log(`${activePlayer.name} wins!`)
                 displayStatus.textContent = `${activePlayer.name} wins!`
+                disableButtons()
                 break; 
             case (board[0].includes('') === false && board[1].includes('') === false && board[2].includes('') === false) :
                 console.log(`It's a tie!`) 
                 displayStatus.textContent = `It's a tie!`
+                disableButtons()
                 break;      
             default:
                 switchPlayerTurn(); 
