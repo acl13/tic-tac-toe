@@ -55,10 +55,10 @@
    
         console.log(getBoard());
         declareWinner();
-        switchPlayerTurn();
     }
 
     declareWinner = () => {
+        const displayStatus = document.getElementById('game-status');
         switch (true) {
             case (board[0][0] === activePlayer.mark && board[0][1] === activePlayer.mark && board[0][2] === activePlayer.mark):
                 console.log(`${activePlayer.name} wins!`)
@@ -88,7 +88,8 @@
                 console.log(`It's a tie!`) 
                 break;      
             default:
-                console.log('no winner declared') 
+                switchPlayerTurn(); 
+                displayStatus.textContent = `${activePlayer.name}: Your Turn`
                 break;      
         }
     }
