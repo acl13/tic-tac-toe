@@ -35,6 +35,35 @@
 })();
 
 
+(function createUI() {
+    const board = getBoard();
+
+    const button1 = document.getElementById('button1');
+    const button2 = document.getElementById('button2');
+    const button3 = document.getElementById('button3');
+    const button4 = document.getElementById('button4');
+    const button5 = document.getElementById('button5');
+    const button6 = document.getElementById('button6');
+    const button7 = document.getElementById('button7');
+    const button8 = document.getElementById('button8');
+    const button9 = document.getElementById('button9');
+
+    updateUserInterface = () => {
+    button1.textContent = board[0][0];
+    button2.textContent = board[0][1];
+    button3.textContent = board[0][2];
+    button4.textContent = board[1][0];
+    button5.textContent = board[1][1];
+    button6.textContent = board[1][2];
+    button7.textContent = board[2][0];
+    button8.textContent = board[2][1];
+    button9.textContent = board[2][2];
+    }
+
+    return updateUserInterface;
+})();
+
+
 (function GameController() {
 
     const players = getPlayers();
@@ -54,6 +83,7 @@
         getRow.splice(chooseColumn, 1, activePlayer.mark);
    
         console.log(getBoard());
+        updateUserInterface();
         declareWinner();
     }
 
