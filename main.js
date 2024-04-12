@@ -48,6 +48,58 @@
     const button8 = document.getElementById('button8');
     const button9 = document.getElementById('button9');
 
+
+  let boardButtons = document.querySelectorAll(".board-button");
+
+for (i = 0; i < boardButtons.length; i++) {
+    const buttons =  [
+        {
+           row: 0,
+           column: 0 
+        },
+        {
+            row: 0,
+            column: 1 
+         },
+         {
+            row: 0,
+            column: 2 
+         },
+         {
+            row: 1,
+            column: 0 
+         },
+         {
+            row: 1,
+            column: 1 
+         },
+         {
+            row: 1,
+            column: 2 
+         },
+         {
+            row: 2,
+            column: 0 
+         },
+         {
+            row: 2,
+            column: 1 
+         },
+         {
+            row: 2,
+            column: 2 
+         },
+    ]
+    let location = buttons[i];
+    boardButtons[i].addEventListener('click', () => {
+        let row = location.row;
+        let column = location.column;
+        playTurn(row, column);
+    
+    })
+}
+  
+
     updateUserInterface = () => {
     button1.textContent = board[0][0];
     button2.textContent = board[0][1];
@@ -59,6 +111,9 @@
     button8.textContent = board[2][1];
     button9.textContent = board[2][2];
     }
+
+
+
 
     return updateUserInterface;
 })();
@@ -74,13 +129,11 @@
         }
 
 
-    playTurn = () => {
-        const chooseRow = prompt(`${activePlayer.name}, choose your row:  0, 1, or 2`);
-        const chooseColumn = prompt(`${activePlayer.name}, choose your column: 0, 1, or 2`);
+    playTurn = (row, column) => {
 
         const board = getBoard();
-        const getRow = board[chooseRow];
-        getRow.splice(chooseColumn, 1, activePlayer.mark);
+        const getRow = board[row];
+        getRow.splice(column, 1, activePlayer.mark);
    
         console.log(getBoard());
         updateUserInterface();
