@@ -35,7 +35,7 @@
 })();
 
 
-(function createUI() {
+(function userInteractions() {
     const board = getBoard();
 
     const button1 = document.getElementById('button1');
@@ -119,6 +119,23 @@ disableButtons = () => {
     button9.textContent = board[2][2];
     }
 
+const openModal = document.getElementById('open-modal');
+const modal = document.getElementById('modal');
+const cancel = document.getElementById('cancel');
+const submit = document.getElementById('submit');
+
+openModal.addEventListener('click', () =>
+{
+    modal.style.display = 'block';
+})
+
+cancel.addEventListener('click', () => {
+    modal.style.display = 'none';
+})
+
+submit.addEventListener('click', () => {
+    modal.style.display = 'none';
+})
 
 
 
