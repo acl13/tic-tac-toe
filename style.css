@@ -46,7 +46,7 @@ body {
     align-items: center;
 }
 
-form input, form button  {
+.players input, .players button  {
     margin: 10px 0px;
 }
 

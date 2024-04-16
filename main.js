@@ -133,10 +133,25 @@ cancel.addEventListener('click', () => {
     modal.style.display = 'none';
 })
 
-submit.addEventListener('click', () => {
-    modal.style.display = 'none';
-})
+submit.addEventListener('click', (event) => {
+    event.preventDefault();
 
+    const playerOne = document.getElementById('player-one');
+    const playerTwo = document.getElementById('player-two');
+    const playerOneInfo = document.getElementById('player-one-info');
+    const playerTwoInfo = document.getElementById('player-two-info');
+
+    playerOneInfo.textContent = `${playerOne.value}: X`;
+    playerTwoInfo.textContent = `${playerTwo.value}: O`;
+
+    if (playerOne.value === '' || playerTwo.value === '') {
+        alert('Invalid input. Please try again.')
+    } else {
+    playerOne.value = '';
+    playerTwo.value = '';
+    modal.style.display = 'none';
+    }
+})
 
 
     return {updateUserInterface, disableButtons};
