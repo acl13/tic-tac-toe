@@ -181,8 +181,8 @@ getPlayerNames = () => {
 
     const players = getPlayers();
 
-    const submit = document.getElementById('submit');
-    submit.addEventListener('click', getPlayerNames());
+  const submit = document.getElementById('submit');
+    submit.addEventListener('click', getPlayerNames);
 
 
 
