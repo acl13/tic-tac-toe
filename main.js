@@ -126,6 +126,8 @@ const submit = document.getElementById('submit');
 
 openModal.addEventListener('click', () =>
 {
+    playerOne.value = '';
+    playerTwo.value = '';
     modal.style.display = 'block';
 })
 
@@ -133,34 +135,58 @@ cancel.addEventListener('click', () => {
     modal.style.display = 'none';
 })
 
-submit.addEventListener('click', (event) => {
-    event.preventDefault();
 
-    const playerOne = document.getElementById('player-one');
-    const playerTwo = document.getElementById('player-two');
-    const playerOneInfo = document.getElementById('player-one-info');
-    const playerTwoInfo = document.getElementById('player-two-info');
+const playerOne = document.getElementById('player-one');
+const playerTwo = document.getElementById('player-two');
+const playerOneInfo = document.getElementById('player-one-info');
+const playerTwoInfo = document.getElementById('player-two-info');
 
+
+
+submit.addEventListener('click', () => {
     playerOneInfo.textContent = `${playerOne.value}: X`;
     playerTwoInfo.textContent = `${playerTwo.value}: O`;
+    const displayStatus = document.getElementById('game-status');
+    displayStatus.textContent = `${playerOne.value}: Your Turn`;
+
+ getPlayerNames();
+   
 
     if (playerOne.value === '' || playerTwo.value === '') {
         alert('Invalid input. Please try again.')
     } else {
-    playerOne.value = '';
-    playerTwo.value = '';
+
     modal.style.display = 'none';
     }
+    
+
 })
 
+getPlayerNames = () => {
+    const playerOne = document.getElementById('player-one');
+    const playerTwo = document.getElementById('player-two');
+    const players = getPlayers();
+    players[0].name = playerOne.value;
+    players[1].name = playerTwo.value;
+    console.log(players[0]);
+    console.log(players[1]);
+    return players;
+ }
 
-    return {updateUserInterface, disableButtons};
+    return {updateUserInterface, disableButtons, getPlayerNames};
 })();
 
 
 (function GameController() {
 
     const players = getPlayers();
+
+    const submit = document.getElementById('submit');
+    submit.addEventListener('click', getPlayerNames());
+
+
+
+   
 
     let activePlayer = players[0];
         switchPlayerTurn = () => {
